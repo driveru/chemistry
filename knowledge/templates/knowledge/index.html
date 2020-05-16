@@ -1,0 +1,66 @@
+{% extends 'layout/basic_main_page.html' %}
+{% load crispy_forms_tags %}
+
+{% block filter %}
+<div class="ml-4 mt-3">
+
+<h3>Фильтры:</h3>
+  <form method="get">
+    {% csrf_token %}
+    {{ filter.form.title|as_crispy_field }}
+    <br />
+    {{ filter.form.level|as_crispy_field }}
+    <br />
+    {{ filter.form.id|as_crispy_field }}
+    <br />
+    <input type="submit" value="Найти" class="btn btn-success"/>
+  </form>
+</div>
+{% endblock %}
+
+{% block message %}
+{% if messages %}
+<div class="alert alert-success alert-message d-flex rounded p-0 fade show" role="alert">
+    <div class="alert-icon d-flex justify-content-center align-items-center flex-grow-0 flex-shrink-0 py-3 ml-2">
+        <i class="fa fa-check"></i>
+    </div>
+    <div class="d-flex align-items-center py-2 px-3" style='font-size: 17px'>
+      {% for msg in messages %}
+        {{ msg }}
+      {% endfor %}
+    </div>
+    <a href="#" class="close d-flex ml-auto justify-content-center align-items-center px-3" data-dismiss="alert">
+        <i class="fa fa-times"></i>
+    </a>
+</div>
+{% endif %}
+{% endblock %}
+
+
+{% block content %}
+  <div class="mt-4">
+  {% if filter.qs %}
+    {% for task in filter.qs %}
+      <form id='delete_form-{{ task.pk }}' action="{% url 'delete_task' task.pk %}" method="post">{% csrf_token %}</form>
+      <h5>{{ task.title }}, №{{task.id}} {% if allowed %}<a href='{% url 'edit_task' task.pk %}'><i class="fa fa-pencil" aria-hidden="true"></i></a>
+      <a href='javascript:void()' onclick="delete_question({{task.pk}})"><i class="fa fa-trash-o" aria-hidden="true"></i></a></h>
+      {% endif %}
+      {% if task.content_1 %}
+        <h4>{{ task.content_1 }}</h>
+      {% else %}
+      </br></br><img src="{{ task.content_2.url }}">
+      {% endif %}
+      </br></br>
+    {% endfor %}
+  {% else %}
+    <h1>К сожалению, заданий по вашему запросу не найдено :( </h1>
+  {% endif %}
+  </div>
+  <script>
+    function delete_question(id) {
+      if (confirm('Вы уверены, что хотите удалить задание №' + id + '?')) {
+        document.getElementById('delete_form-' + id).submit()
+      }
+    }
+  </script>
+{% endblock %}

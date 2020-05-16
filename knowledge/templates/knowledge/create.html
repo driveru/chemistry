@@ -1,0 +1,58 @@
+{% extends 'layout/basic_main_page.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+
+{% if messages %}
+<div class="alert.alert-success">
+  {% for msg in messages %}
+    {{ msg }}
+  {% endfor %}
+</div>
+{% endif %}
+
+
+{% if edit %}
+<div id="range1">
+  <h4>Редактирование задания №{{ task.id }}</h>
+  </br></br>
+  <form method="post">
+      {% csrf_token %}
+      {{ form.title|as_crispy_field }}
+      </br>
+      {{ form.content_1|as_crispy_field }}
+      <h3>Или</h3>
+      </br>
+      {{ form.content_2|as_crispy_field }}
+      </br>
+      {{ form.level|as_crispy_field }}
+      </br></br>
+      <a href="{% url 'knowledge_index' %}"><input class="btn btn-danger btn-lg" type="button" value="Отмена"></a>
+      <input class="btn btn-success btn-lg" type="submit" value='Редактировать'></input>
+  </form>
+
+</div>
+{% else %}
+<div id="range1">
+  <h4>Добавление задания</h>
+  </br></br>
+  <form method="post">
+      {% csrf_token %}
+      {{ form.title|as_crispy_field }}
+      </br>
+      {{ form.content_1|as_crispy_field }}
+      <h3>Или</h3>
+      </br>
+      {{ form.content_2|as_crispy_field }}
+      </br>
+      {{ form.level|as_crispy_field }}
+      </br></br>
+      <a href="{% url 'knowledge_index' %}"><input class="btn btn-danger btn-lg" type="button" value="Отмена"></a>
+      <input class="btn btn-success btn-lg" type="submit" value='Добавить'></input>
+
+  </form>
+
+</div>
+{% endif %}
+{% endblock %}

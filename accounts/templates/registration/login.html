@@ -1,0 +1,33 @@
+{% extends  'layout/basic_registration.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+<div id="range1">
+
+<div class="outer">
+  <div class="middle">
+    <div class="inner">
+
+        <div class="login-wr">
+          <h2>Вход</h2>
+
+          <div class="form">
+            <form method="post">
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{{ next }}">
+
+            {{ form|crispy }}
+
+            <button type="submit" class="btn btn-primary btn-block">Войти</button>
+            </form>
+            <a href="{% url 'signup' %}"> <p> У вас нет аккаунта? Регистрация </p></a>
+          </div>
+        </div>
+
+    </div>
+  </div>
+</div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/registration.css' %}" />
+    <meta charset="utf-8">
+    <title>{% block title %}{% endblock %}</title>
+    <style>
+      body { background-image: url({% static 'img/registration_bg.jpg' %});
+           }
+    </style>
+  </head>
+  <body>
+    {% block content %}
+    {% endblock %}
+  </body>
+</html>
