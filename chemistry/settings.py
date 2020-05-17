@@ -26,7 +26,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', '#5o86&qaipm0a3u3%=33hit3!18a$t
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['localhost', 'chemistry-utl.herokuapp.com', 'warm-brushlands-23819.herokuapp.com']
+ALLOWED_HOSTS = ['localhost', 'chemistry-utl.herokuapp.com']
 
 
 # Application definition
@@ -127,8 +127,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media') # 'media' is my media folder
-MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'data/media') # 'media' is my media folder
+MEDIA_URL = 'data/media/'
 
 LOGIN_REDIRECT_URL = '/knowledge'
 LOGOUT_REDIRECT_URL = '/knowledge'
