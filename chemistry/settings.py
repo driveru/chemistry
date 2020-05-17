@@ -24,9 +24,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', '#5o86&qaipm0a3u3%=33hit3!18a$t+odyq@t65(2ehg74)ciw')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = ['localhost', 'chemistry-utl.herokuapp.com', 'warm-brushlands-23819.herokuapp.com']
 
 
 # Application definition
