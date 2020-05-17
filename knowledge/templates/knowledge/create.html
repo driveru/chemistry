@@ -17,7 +17,7 @@
 <div id="range1">
   <h4>Редактирование задания №{{ task.id }}</h>
   </br></br>
-  <form method="post">
+  <form method="post" enctype="multipart/form-data">
       {% csrf_token %}
       {{ form.title|as_crispy_field }}
       </br>
@@ -37,7 +37,7 @@
 <div id="range1">
   <h4>Добавление задания</h>
   </br></br>
-  <form method="post">
+  <form method="post" enctype="multipart/form-data">
       {% csrf_token %}
       {{ form.title|as_crispy_field }}
       </br>
