@@ -48,7 +48,7 @@ class CreateTaskView(LoginRequiredMixin, CreateView):
         self.object = form.save(commit=False)
         self.object.author = self.request.user
         self.object.save()
-        print('------------', self.request.FILES)
+    
         title = self.request.POST['title']
         success_message = f'Новая { title } добавлена!'
         messages.success(self.request, success_message)
