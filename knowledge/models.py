@@ -10,7 +10,7 @@ class Task(models.Model):
     author = models.ForeignKey(User, on_delete=models.PROTECT, blank=True, null=True, verbose_name='Автор')
     title = models.CharField(max_length=60, choices=TASK_TYPES, verbose_name='Тип задания')
     content_1 = models.TextField(blank=True, null=False, max_length=700, verbose_name='Текст задания')
-    content_2 = models.ImageField(upload_to='task_images', blank=True, null=False, verbose_name='Фото задания')
+    content_2 = models.ImageField(upload_to='task_images/%Y/%m/%d/', blank=True, null=False, verbose_name='Фото задания')
     level = models.IntegerField(choices=LEVELS, verbose_name='Класс')
 
     class Meta:

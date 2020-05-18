@@ -47,7 +47,8 @@
       {% endif %}
       {% if task.content_1 %}
         <h4>{{ task.content_1 }}</h>
-      {% else %}
+      {% endif %}
+      {% if task.content_2 %}
         </br></br><img src="{{ task.content_2.url }}">
       {% endif %}
       </br></br>
