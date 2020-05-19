@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from knowledge.views import is_allowed
 # Create your views here.
 def index(request):
-    return HttpResponse('Домашняя старница')
+    return render(request, 'home/index.html')
 
 def about(request):
     if is_allowed(request.user.groups.all()):
