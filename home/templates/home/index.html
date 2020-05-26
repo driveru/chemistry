@@ -1,15 +1,41 @@
 {% extends 'layout/basic_main_page.html' %}
 
 {% block content %}
-<div class="row">
-  <a href='{% url 'knowledge_index' %}'><div class="col-md-3" style='height: 150px'>
-    Задания
+<div class="my-flex-container">
+  <div class="accordion">
+    <div class="container__wrapper">
+      <div class="container__content">
+        <button class="accordion" onclick="location.href = '{% url 'knowledge_index' %}'">Задания</button>
+      </div>
+    </div>
   </div>
-  <a href='{% url 'about' %}'><div class="col-md-3" style='height: 150px'>
-    О проекте
-  </div></a>
-  <a href='#'><div class="col-md-3" style='height: 150px'>
-    Тесты
-  </div></a>
+  <div class="accordion">
+    <div class="container__wrapper">
+      <div class="container__content">
+        <button class="accordion" onclick="location.href = '{% url 'about' %}'">О проекте</button>
+      </div>
+    </div>
+  </div>
+  <div class="accordion">
+    <div class="container__wrapper">
+      <div class="container__content">
+        <button class="accordion" onclick="location.href = '#'">Тесты</button>
+      </div>
+    </div>
+  </div>
+  <div class="accordion">
+    <div class="container__wrapper">
+      <div class="container__content">
+        <button class="accordion" onclick="location.href = '{% url 'login' %}'">Вход</button>
+      </div>
+    </div>
+  </div>
+  <div class="accordion">
+    <div class="container__wrapper">
+      <div class="container__content">
+        <button class="accordion" onclick="location.href = '{% url 'signup' %}'">Регистарция</button>
+      </div>
+    </div>
+  </div>
 </div>
 {% endblock %}
