@@ -5,4 +5,4 @@ psycopg2==2.8.5
 whitenoise==5.0.1
 django-crispy-forms==1.9.0
 django-filter==2.2.0
-Pillow==7.1.2
+Pillow==8.1.1
